@@ -428,14 +428,18 @@ def convert_dataset(
             width = dataset_attrs['width']
             height = dataset_attrs['height']
             if width != height:
-                error(f'Image dimensions after scale and crop are required to be square.  Got {width}x{height}')
+                print(f'Image dimensions after scale and crop are required to be square.  Got {width}x{height}')
+                continue
             if dataset_attrs['channels'] not in [1, 3]:
-                error('Input images must be stored as RGB or grayscale')
+                print('Input images must be stored as RGB or grayscale')
+                continue
             if width != 2 ** int(np.floor(np.log2(width))):
-                error('Image width/height after scale and crop are required to be power-of-two')
+                print('Image width/height after scale and crop are required to be power-of-two')
+                continue
         elif dataset_attrs != cur_image_attrs:
             err = [f'  dataset {k}/cur image {k}: {dataset_attrs[k]}/{cur_image_attrs[k]}' for k in dataset_attrs.keys()] # pylint: disable=unsubscriptable-object
-            error(f'Image {archive_fname} attributes must be equal across all images of the dataset.  Got:\n' + '\n'.join(err))
+            print(f'Image {archive_fname} attributes must be equal across all images of the dataset.  Got:\n' + '\n'.join(err))
+            continue
 
         # Save the image as an uncompressed PNG.
         img = PIL.Image.fromarray(img, { 1: 'L', 3: 'RGB' }[channels])
