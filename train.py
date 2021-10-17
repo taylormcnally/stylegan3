@@ -252,7 +252,7 @@ def main(**kwargs):
 
     # Augmentation.
     if opts.aug != 'noaug':
-        c.augment_kwargs = dnnlib.EasyDict(class_name='training.augment.AugmentPipe', xflip=0, rotate90=.125, xint=.125, scale=.125, rotate=.125, aniso=.125, xfrac=.125, brightness=.125 , contrast=.125, lumaflip=0, hue=.125, saturation=.125)
+        c.augment_kwargs = dnnlib.EasyDict(class_name='training.augment.AugmentPipe', xflip=0, rotate90=0, xint=.125, scale=.125, rotate=.125, aniso=.125, xfrac=0.125, brightness=0, contrast=0, lumaflip=0, hue=0, saturation=0)
         if opts.aug == 'ada':
             c.ada_target = opts.target
         if opts.aug == 'fixed':
