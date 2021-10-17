@@ -403,8 +403,8 @@ class SynthesisNetwork(torch.nn.Module):
         img_channels,                   # Number of color channels.
         channel_base        = 32768,    # Overall multiplier for the number of channels.
         channel_max         = 512,      # Maximum number of channels in any layer.
-        num_layers          = 14,       # Total number of layers, excluding Fourier features and ToRGB.
-        num_critical        = 2,        # Number of critically sampled layers at the end.
+        num_layers          = 28,       # Total number of layers, excluding Fourier features and ToRGB.
+        num_critical        = 4,        # Number of critically sampled layers at the end.
         first_cutoff        = 2,        # Cutoff frequency of the first layer (f_{c,0}).
         first_stopband      = 2**2.1,   # Minimum stopband of the first layer (f_{t,0}).
         last_stopband_rel   = 2**0.3,   # Minimum stopband of the last layer, expressed relative to the cutoff.
